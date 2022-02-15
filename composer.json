@@ -1,0 +1,21 @@
+{
+  "name": "brezgalov/yii2-api-logger",
+  "description": "logs api input and output",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Oleg Brezgalov",
+      "email": "oleg.brezgalov@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.2.0",
+    "yiisoft/yii2": "~2.0.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "Brezgalov\\ApiLogger\\": "src/"
+    }
+  }
+}
