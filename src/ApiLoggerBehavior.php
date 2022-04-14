@@ -12,6 +12,13 @@ class ApiLoggerBehavior extends Behavior
 {
     const DEFAULT_APP_NAME = 'default';
 
+    const TEXT_MAX_LENGTH = 65535;
+
+    /**
+     * @var int
+     */
+    public $responseLogMaxLength = self::TEXT_MAX_LENGTH;
+
     /**
      * @var ILogStorage
      */
@@ -133,6 +140,10 @@ class ApiLoggerBehavior extends Behavior
             $data = json_encode($data);
         } elseif (!is_string($data)) {
             $data = (string)$data;
+        }
+
+        if (strlen($data) > $this->responseLogMaxLength) {
+            $data = mb_substr($data, 0, $this->responseLogMaxLength - 3) . '...';
         }
 
         $logDto->response_code = (string)\Yii::$app->response->statusCode;
